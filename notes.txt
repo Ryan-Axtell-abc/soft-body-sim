@@ -1,12 +1,7 @@
-Things to explain:
-the physics of how friction is calculated
-
-
-toggle quad
-upload to site
-upload to github
-make site card
-make portfolio icon
+make readme
 
 Bonus:
-for organizational reasons make the 
+for organizational reasons make the shapes all in json files
+
+Things to explain:
+the physics of how friction is calculated
