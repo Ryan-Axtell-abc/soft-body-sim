@@ -1,0 +1,680 @@
+{
+	"inner_points": [
+	],
+	"surface_points": [
+		{
+			"x": 2.7574,
+			"y": -0.0699
+		},
+		{
+			"x": 2.688,
+			"y": -0.0222
+		},
+		{
+			"x": 2.6154,
+			"y": 0.0202
+		},
+		{
+			"x": 2.5398,
+			"y": 0.0572
+		},
+		{
+			"x": 2.4636,
+			"y": 0.0929
+		},
+		{
+			"x": 2.3869,
+			"y": 0.1276
+		},
+		{
+			"x": 2.3103,
+			"y": 0.1625
+		},
+		{
+			"x": 2.2298,
+			"y": 0.1949
+		},
+		{
+			"x": 2.1432,
+			"y": 0.2179
+		},
+		{
+			"x": 2.0574,
+			"y": 0.2409
+		},
+		{
+			"x": 2.0409,
+			"y": 0.2934
+		},
+		{
+			"x": 2.0588,
+			"y": 0.3909
+		},
+		{
+			"x": 2.1055,
+			"y": 0.4741
+		},
+		{
+			"x": 2.2031,
+			"y": 0.5414
+		},
+		{
+			"x": 2.3154,
+			"y": 0.5896
+		},
+		{
+			"x": 2.4355,
+			"y": 0.6081
+		},
+		{
+			"x": 2.5448,
+			"y": 0.6109
+		},
+		{
+			"x": 2.6416,
+			"y": 0.6228
+		},
+		{
+			"x": 2.7066,
+			"y": 0.6214
+		},
+		{
+			"x": 2.7697,
+			"y": 0.608
+		},
+		{
+			"x": 2.8634,
+			"y": 0.5546
+		},
+		{
+			"x": 2.9429,
+			"y": 0.5068
+		},
+		{
+			"x": 3.0074,
+			"y": 0.4906
+		},
+		{
+			"x": 3.0626,
+			"y": 0.462
+		},
+		{
+			"x": 3.1081,
+			"y": 0.4571
+		},
+		{
+			"x": 3.1335,
+			"y": 0.442
+		},
+		{
+			"x": 3.1514,
+			"y": 0.4008
+		},
+		{
+			"x": 3.1544,
+			"y": 0.3521
+		},
+		{
+			"x": 3.1573,
+			"y": 0.3174
+		},
+		{
+			"x": 3.1582,
+			"y": 0.2536
+		},
+		{
+			"x": 3.1515,
+			"y": 0.1624
+		},
+		{
+			"x": 3.1317,
+			"y": 0.0858
+		},
+		{
+			"x": 3.1133,
+			"y": 0.0138
+		},
+		{
+			"x": 3.1138,
+			"y": -0.0664
+		},
+		{
+			"x": 3.1219,
+			"y": -0.149
+		},
+		{
+			"x": 3.1322,
+			"y": -0.2307
+		},
+		{
+			"x": 3.0928,
+			"y": -0.3045
+		},
+		{
+			"x": 3.0456,
+			"y": -0.327
+		},
+		{
+			"x": 3.0058,
+			"y": -0.2964
+		},
+		{
+			"x": 2.948,
+			"y": -0.2352
+		},
+		{
+			"x": 2.8867,
+			"y": -0.1776
+		},
+		{
+			"x": 2.8232,
+			"y": -0.1223
+		}
+	],
+	"springs": [
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 24
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 25
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 7
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 8
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 9
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 10
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 35
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 36
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 16
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 17
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 11
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 12
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 33
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 34
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 37
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 38
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 14
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 15
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 19
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 20
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 21
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 22
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 23
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 24
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 26
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 27
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 28
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 29
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 40
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 41
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 0
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 1
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 2
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 3
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 4
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 5
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 6
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 7
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 8
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 9
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 12
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 13
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 29
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 30
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 30
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 31
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 31
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 32
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 34
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 35
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 38
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 39
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 13
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 14
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 17
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 18
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 20
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 21
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 22
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 23
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 18
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 19
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 25
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 26
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 27
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 28
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 15
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 16
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 10
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 11
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 39
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 40
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 41
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 0
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 1
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 2
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 3
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 4
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 5
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 6
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 32
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 33
+				}
+		},
+		{
+			"a":
+				{
+					"spring_list": "surface",
+					"index": 36
+				},
+			"b":
+				{
+					"spring_list": "surface",
+					"index": 37
+				}
+		}
+	]
+}

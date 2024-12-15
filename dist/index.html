@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+  <style type="text/css">/*body {
+    display: flex;
+    flex-direction: row;
+    font-family: testfont;
+}
+
+
+#main-view {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+*/
+
+body {
+    background: url("data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20width='16'%20height='16'%20fill='none'%3e%3ccircle%20fill='rgb(0%200%200%20/%200.2)'%20id='pattern-circle'%20cx='10'%20cy='10'%20r='1.6257413380501518'%3e%3c/circle%3e%3c/svg%3e");
+    overflow: clip;
+    margin: 0;
+    background-color: #fafafa;
+    background-color: #fdfdfd;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+@font-face {
+    font-family: custom-heavy;
+    src: url('/assets/AOTFShinGoProBold-DoD8-ht3.otf');
+    /*
+    src: url(assets/fonts/FOT-YurukaStd-UB.otf);
+    */
+}
+
+@font-face {
+    font-family: custom-normal;
+    src: url('/assets/AOTFShinGoProMedium-DCkjDyjc.otf');
+}
+
+#menu-holder {
+    position: absolute;
+    z-index: 10;
+    width: 320px;
+    padding-bottom: 30px;
+    /*
+    height: 240px;
+    */
+    right: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    /*
+    font-family: testfont;
+    */
+    font-family: custom-normal;
+    font-size: 14px;
+
+    /*
+    */
+
+    transition: top .15s, height .2s;
+}
+
+.title-holder {
+    font-family: custom-heavy;
+    font-weight: bold;
+    font-size: 14px;
+
+}
+
+.setting-row-holder {
+    /*
+    gap: 10px;
+    border-bottom: 1px dashed;
+    */
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px 20px;
+    flex-wrap: wrap;
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.setting-row-holder>* {
+    flex: 1 1 20px;
+}
+
+#custom-fps-holder {
+    position: absolute;
+    z-index: 10;
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    top: 100px;
+    left: 100px;
+}
+
+.svg-holder {
+    color: black;
+    height: 26px;
+    width: 26px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .1);
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, .9);
+    position: absolute;
+    z-index: 100;
+    /*
+
+    backdrop-filter: blur(10rem);
+    */
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-material {
+    background-color: #e5e7eb;
+    backdrop-filter: blur(10rem);
+    background: rgba(229, 231, 235, 0.1);
+    background: rgba(116, 157, 199, 0.1);
+    background: rgba(229, 231, 235, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .1);
+
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.settings-holder {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    font-family: custom-normal;
+}
+
+.hidden {
+
+    display: none !important;
+}
+
+.show-flex {
+    display: flex !important;
+}
+
+#menu-toggle-button {
+    width: 26px;
+    height: 26px;
+    padding: 4px;
+    bottom: 4px !important;
+    position: absolute;
+    /*
+    background-color: red;
+    right: 0px;
+    */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    #menu-holder {
+        width: 100%;
+        /*
+        top: auto;
+        bottom: 0px;
+        */
+    }
+
+    #level-button-holder {
+        bottom: 0px;
+    }
+    .level-button-holder-offset {
+        margin-left: 0px !important;
+    }
+
+  }
+
+.hide-menu {
+    /*
+    top: -205px !important;
+    top: calc(anchor(bottom) - 100px) !important;
+    */
+}
+
+.button {
+
+    padding: 4px;
+    border-radius: 8px;
+}
+
+hr.separator{
+    border: none;
+    border-bottom: 1px solid;
+}
+
+#level-button-holder {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    padding: 2px;
+    gap: 2px;
+    position: absolute;
+}
+
+#level-button-holder a {
+    text-decoration: none;
+}
+
+.level-button-holder-offset {
+    margin-left: 80px;
+}
+
+.level-holder {
+    width: fit-content;
+    padding: .5rem 1rem;
+    font-family: custom-normal;
+    font-size: 14px;
+    line-height: 1rem;
+    vertical-align: middle;
+    text-align: center;
+    color: black;
+}
+
+#frame-settings-holder {
+    overflow-y: hidden;
+    width: 100%;
+    height: 0px;
+    transition: height .2s;
+    /*
+    width: calc(100% - 40px);
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: rgba(0, 0, 0, .05);
+    */
+}
+
+#custom-rectangle-settings-holder {
+    width: 100%;
+    height: 0px;
+    transition: height .2s;
+    overflow-y: hidden;
+}
+  </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=0.75">
+
+
+
+  <script type="module" crossorigin src="/assets/main-CZnHBFKB.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/setup_functions-CZy7jf0m.js">
+</head>
+<body>
+
+  <div id="settings-overlay" class="overlay hidden">
+    <div class="settings-holder card-material">
+
+      <div id="settings-close-button" class="svg-holder button">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  fill="none"
+>
+  <path
+    d="M9 15L12 12M12 12L15 9M12 12L9 9M12 12L15 15M11.9999 21.1499C6.94645 21.1499 2.84985 17.0533 2.84985 11.9999C2.84985 6.94645 6.94645 2.84985 11.9999 2.84985C17.0533 2.84985 21.1499 6.94645 21.1499 11.9999C21.1499 17.0533 17.0533 21.1499 11.9999 21.1499Z"
+    stroke="currentcolor"
+    stroke-width="1.4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
+      </div>
+
+      <div class="title-holder">
+        <h1>Settings</h1>
+      </div>
+
+
+      <div class="setting-row-holder">
+        <label for="show-fps-checkbox">Display FPS</label><br>
+        <div class="setting-row-input-holder">
+          <input type="checkbox" id="show-fps-checkbox" name="show-fps-checkbox" value="false">
+        </div>
+      </div>
+
+      <div class="setting-row-holder">
+        <hr class="separator">
+      </div>
+
+      <div class="setting-row-holder">
+        <label for="draw-springs-checkbox">Draw springs</label><br>
+        <div class="setting-row-input-holder">
+          <input type="checkbox" id="draw-springs-checkbox" name="draw-springs-checkbox" checked>
+        </div>
+      </div>
+      
+      <div class="setting-row-holder">
+        <label for="draw-frames-checkbox">Draw frames</label><br>
+        <div class="setting-row-input-holder">
+          <input type="checkbox" id="draw-frames-checkbox" name="draw-frames-checkbox">
+        </div>
+      </div>
+  
+      <div class="setting-row-holder">
+        <label for="draw-vertices-checkbox">Draw vertices</label><br>
+        <div class="setting-row-input-holder">
+          <input type="checkbox" id="draw-vertices-checkbox" name="draw-vertices-checkbox">
+        </div>
+      </div>
+  
+      <div class="setting-row-holder">
+        <hr class="separator">
+      </div>
+
+      <div class="setting-row-holder">
+        <label for="update-itterations-input">Updates per tick</label><br>
+        <div class="setting-row-input-holder"> 
+          <input type="number" id="update-itterations-input" name="update-itterations-input" min="0" max="10" style="width: calc(100% - 8px);" value="1"/>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+  <div id="level-button-holder" class="level-button-holder-offset" style="display: auto;">
+    <a href="/">
+      <div id="level-1-holder" class="card-material level-holder">
+        Sandbox
+      </div>
+    </a>
+    <div style="display: flex; flex-direction: row; align-items: center;">
+      <a href="/car-level.html">
+        <div id="level-2-holder" class="card-material level-holder">
+          Car Level
+        </div>
+      </a>
+      
+      <div style="margin-left: 10px; 
+      font-family: custom-normal;
+      font-size: 13px;">
+        &lt; Check this out
+      </div> 
+    </div>
+
+  </div>
+
+  
+  <div id="menu-holder" class="card-material">
+    <!---->
+    <div id= "settings-open-button" class="svg-holder button">
+      <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <path
+        d="M10.2007 4.11982C10.8318 3.50174 11.1473 3.1927 11.5097 3.07661C11.8285 2.97446 12.1713 2.97446 12.4902 3.07661C12.8526 3.1927 13.1681 3.50174 13.7992 4.11982L14.1026 4.417C14.3754 4.68424 14.5118 4.81786 14.6701 4.91393C14.8104 4.99913 14.963 5.06232 15.1225 5.1013C15.3023 5.14527 15.4932 5.14725 15.8751 5.15122L16.2998 5.15562C17.1831 5.16479 17.6247 5.16937 17.9631 5.34354C18.2608 5.49678 18.5032 5.73918 18.6564 6.03688C18.8306 6.37522 18.8351 6.81685 18.8443 7.70012L18.8487 8.12481C18.8527 8.5067 18.8547 8.69764 18.8986 8.87749C18.9376 9.03695 19.0008 9.18951 19.086 9.32984C19.1821 9.48809 19.3157 9.62451 19.5829 9.89735L19.8801 10.2008C20.4982 10.8318 20.8072 11.1473 20.9233 11.5097C21.0255 11.8286 21.0255 12.1714 20.9233 12.4903C20.8072 12.8527 20.4982 13.1682 19.8801 13.7992L19.5829 14.1026C19.3157 14.3755 19.1821 14.5119 19.086 14.6702C19.0008 14.8105 18.9376 14.963 18.8986 15.1225C18.8547 15.3024 18.8527 15.4933 18.8487 15.8752L18.8443 16.2999C18.8351 17.1831 18.8306 17.6248 18.6564 17.9631C18.5032 18.2608 18.2608 18.5032 17.9631 18.6565C17.6247 18.8306 17.1831 18.8352 16.2998 18.8444L15.8751 18.8488C15.4932 18.8527 15.3023 18.8547 15.1225 18.8987C14.963 18.9377 14.8104 19.0009 14.6701 19.0861C14.5118 19.1821 14.3754 19.3158 14.1026 19.583L13.7992 19.8802C13.1681 20.4983 12.8526 20.8073 12.4902 20.9234C12.1713 21.0255 11.8285 21.0255 11.5097 20.9234C11.1473 20.8073 10.8318 20.4983 10.2007 19.8802L9.89729 19.583C9.62445 19.3158 9.48803 19.1821 9.32978 19.0861C9.18945 19.0009 9.03689 18.9377 8.87742 18.8987C8.69758 18.8547 8.50664 18.8527 8.12475 18.8488L7.70006 18.8444C6.81679 18.8352 6.37516 18.8306 6.03682 18.6565C5.73912 18.5032 5.49672 18.2608 5.34348 17.9631C5.16931 17.6248 5.16473 17.1831 5.15556 16.2999L5.15115 15.8752C5.14719 15.4933 5.14521 15.3024 5.10124 15.1225C5.06226 14.963 4.99907 14.8105 4.91387 14.6702C4.81779 14.5119 4.68418 14.3755 4.41694 14.1026L4.11976 13.7992C3.50168 13.1682 3.19264 12.8527 3.07655 12.4903C2.9744 12.1714 2.9744 11.8286 3.07655 11.5097C3.19264 11.1473 3.50168 10.8318 4.11976 10.2008L4.41694 9.89735C4.68418 9.62451 4.81779 9.48809 4.91387 9.32984C4.99907 9.18951 5.06226 9.03695 5.10124 8.87749C5.14521 8.69764 5.14719 8.5067 5.15115 8.12481L5.15556 7.70012C5.16473 6.81685 5.16931 6.37522 5.34348 6.03688C5.49672 5.73918 5.73912 5.49678 6.03682 5.34354C6.37516 5.16937 6.81679 5.16479 7.70006 5.15562L8.12475 5.15122C8.50664 5.14725 8.69758 5.14527 8.87742 5.1013C9.03689 5.06232 9.18945 4.99913 9.32978 4.91393C9.48803 4.81786 9.62445 4.68424 9.89729 4.417L10.2007 4.11982Z"
+        stroke="currentcolor"
+        stroke-width="1.4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M10.991 12C10.991 11.4477 11.4479 11 12.0001 11C12.5524 11 13.0093 11.4477 13.0093 12C13.0093 12.5523 12.5524 13 12.0001 13C11.4479 13 10.991 12.5523 10.991 12Z"
+        stroke="currentcolor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+    </div>
+
+    <div class="title-holder">
+      <h1>Menu</h1>
+    </div>
+
+    <div class="setting-row-holder">
+      <label for="shape-selection-dropdown">Shape</label><br>
+      <div class="setting-row-input-holder"> 
+        <select name="shape-selection-dropdown" id="shape-selection-dropdown" style="width: 100%;">
+          <option value="2x2-square" selected="selected">2x2 Square</option>
+          <!-- <option value="3x3-square" >3x3 Square</option> -->
+          <option value="4x4-square">4x4 Square</option>
+          <option value="circle">Circle</option>
+          <option value="circle-2">Circle 2</option>
+          <option value="2x8-rectangle">2x8 Rectangle</option>
+          <option value="2x12-rectangle">2x12 Rectangle</option>
+          <!-- <option value="2x20-rectangle">2x20 Rectangle</option> -->
+          <option value="3x12-rectangle">3x12 Rectangle</option>
+          <option value="custom-rectangle">Custom Rectangle</option>
+          <option id="quad-option" style="display: none;" value="quad">Quad</option>
+        </select>
+      </div>
+    </div>
+    <div id="custom-rectangle-settings-holder">
+      <div class="setting-row-holder">
+        <label for="custom-rectangle-width-input">Width</label><br>
+        <div class="setting-row-input-holder"> 
+          <input type="number" id="custom-rectangle-width-input" name="custom-rectangle-width-input" min="2" max="100" style="width: calc(100% - 8px);" value="6"/>
+        </div>
+      </div>
+
+      <div class="setting-row-holder">
+        <label for="custom-rectangle-height-input">Height</label><br>
+        <div class="setting-row-input-holder"> 
+          <input type="number" id="custom-rectangle-height-input" name="custom-rectangle-height-input" min="2" max="100" style="width: calc(100% - 8px);" value="2"/>
+        </div>
+      </div>
+
+      <div class="setting-row-holder">
+        <label for="segmented-frame-checkbox">Split frame</label><br>
+        <div class="setting-row-input-holder">
+          <input type="checkbox" id="segmented-frame-checkbox" name="segmented-frame-checkbox">
+        </div>
+      </div>
+
+      <div id="frame-settings-holder" class="">
+
+      <!--
+      <div class="setting-row-holder">
+        <hr class="separator">
+      </div>
+      -->
+
+        <div class="setting-row-holder">
+          <label for="segment-width-input">└ Segment width</label><br>
+          <div class="setting-row-input-holder"> 
+            <input type="number" id="segment-width-input" name="segment-width-input" min="3" max="5" style="width: calc(100% - 8px);" value="3"/>
+          </div>
+        </div>
+
+        <div class="setting-row-holder">
+          <label for="fixed-ends-checkbox">└ Fixed ends</label><br>
+          <div class="setting-row-input-holder">
+            <input type="checkbox" id="fixed-ends-checkbox" name="fixed-ends-checkbox">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="setting-row-holder">
+      <button id="build-button">Build</button>
+    </div>
+    <!--
+    <div class="setting-row-holder">
+      <button id="play-toggle-button">Play/Pause</button>
+    </div>
+    -->
+    <div class="setting-row-holder">
+      <button id="clear-all-button">Clear All</button>
+    </div>
+
+    <div id="menu-toggle-button" class="button">
+      <svg id="down-arrow" class="hidden"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M6 9C7.57701 11.1808 9.42293 13.1364 11.4899 14.8172C11.7897 15.0609 12.2103 15.0609 12.5101 14.8172C14.5771 13.1364 16.423 11.1808 18 9"
+          stroke="currentcolor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <svg id="up-arrow"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M6 15C7.57701 12.8192 9.42293 10.8636 11.4899 9.18284C11.7897 8.93905 12.2103 8.93905 12.5101 9.18284C14.5771 10.8636 16.423 12.8192 18 15"
+          stroke="currentcolor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+  </div>
+  
+  <div id="cloth-sim-holder">
+
+  </div>
+</body>
+</html>
