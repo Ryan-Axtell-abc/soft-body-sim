@@ -6,15 +6,15 @@ A soft body physics simluation written in JavaScript, based on my previous cloth
 
 ## Demo
 
-[Live Demo Link](https://fabric.ryanaxtell.dev/)
+[Live Demo Link](https://softbody.ryanaxtell.dev/)
 
 # Controls
 
 | Command          | Action         |
 |------------------|----------------|
-| **Left click**   | Drag cloth     |
+| **Left click**   | Drag shapes    |
 | **Middle Click** | High grav mode |
-| **Right click**  | Cut cloth      |
+| **Right click**  | Delete shapes  |
 
 ## Installation
 
@@ -26,8 +26,8 @@ A soft body physics simluation written in JavaScript, based on my previous cloth
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/Ryan-Axtell-abc/verlet-cloth-sim.git
-cd verlet-cloth-sim
+git clone https://github.com/Ryan-Axtell-abc/soft-body-sim.git
+cd soft-body-sim
 ```
 
 ### Install Dependencies
