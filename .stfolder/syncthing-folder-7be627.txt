@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: gpdnz-rpysr
+created: 2024-11-05T23:56:10-08:00

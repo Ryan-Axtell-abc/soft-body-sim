@@ -1,0 +1,12 @@
+Things to explain:
+the physics of how friction is calculated
+
+
+toggle quad
+upload to site
+upload to github
+make site card
+make portfolio icon
+
+Bonus:
+for organizational reasons make the 

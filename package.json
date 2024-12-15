@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@lancercomet/fps-counter": "^1.0.0",
+    "pixi-viewport": "^5.0.3",
+    "pixi.js": "^8.3.4",
+    "stats.js": "^0.17.0",
+    "vite-plugin-ejs": "^1.7.0"
+  }
+}
