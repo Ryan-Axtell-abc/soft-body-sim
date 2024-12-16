@@ -1,6 +1,6 @@
 import { Container, Graphics, Point, Sprite } from "pixi.js";
 import { make_circle_1, make_circle_2, make_quad, make_car_body, general_rectangle_builder } from "./shape_building.js";
-import { clear_shapes, create_circle_texture, hide_element, point_in_polygon, set_shape_position, show_element } from "./functions.js";
+import { clear_shapes, create_circle_texture, get_world_position, hide_element, point_in_polygon, set_shape_position, show_element } from "./functions.js";
 
 
 export function setup(globals, app) {
@@ -177,9 +177,9 @@ export function set_up_event_listeners(globals, elements, constants, app) {
     app.canvas.addEventListener("touchstart", (event) => {
         const touches = event.changedTouches;
         const last_touch = touches[touches.length - 1];
-        //globals.mouse_screen_position = {x: last_touch.clientX, y: last_touch.clientY};
-        //const world_pos = get_world_position(globals.viewport, last_touch.clientX, last_touch.clientY);
-        globals.mouse_world_position = world_pos;
+
+        globals.mouse_screen_position = {x: last_touch.clientX, y: last_touch.clientY};
+        globals.mouse_world_position = get_world_position(globals.viewport, globals.mouse_screen_position.x, globals.mouse_screen_position.y);
         globals.drag_mode = true;
         globals.actively_dragging = false;
     });
@@ -187,14 +187,15 @@ export function set_up_event_listeners(globals, elements, constants, app) {
     app.canvas.addEventListener("touchend", (event) => {
         const touches = event.changedTouches;
         const last_touch = touches[touches.length - 1];
-
         globals.mouse_screen_position = {x: last_touch.clientX, y: last_touch.clientY};
-        //const world_pos = get_world_position(globals.viewport, last_touch.clientX, last_touch.clientY);
-        //globals.mouse_world_position = world_pos;
+        globals.mouse_world_position = get_world_position(globals.viewport, globals.mouse_screen_position.x, globals.mouse_screen_position.y);
         globals.drag_mode = false;
         globals.actively_dragging = false;
         if (globals.chosen_dragging_vertex != null) {
             globals.chosen_dragging_vertex.grabbed = false;
+        }
+        if (globals.grabbed_shape != null) {
+            globals.grabbed_shape.grabbed = false;
         }
     });
 
@@ -202,12 +203,14 @@ export function set_up_event_listeners(globals, elements, constants, app) {
         const touches = event.changedTouches;
         const last_touch = touches[touches.length - 1];
         globals.mouse_screen_position = {x: last_touch.clientX, y: last_touch.clientY};
-        //const world_pos = get_world_position(globals.viewport, last_touch.clientX, last_touch.clientY);
-        //globals.mouse_world_position = world_pos;
+        globals.mouse_world_position = get_world_position(globals.viewport, globals.mouse_screen_position.x, globals.mouse_screen_position.y);
         globals.drag_mode = false;
         globals.actively_dragging = false;
         if (globals.chosen_dragging_vertex != null) {
             globals.chosen_dragging_vertex.grabbed = false;
+        }
+        if (globals.grabbed_shape != null) {
+            globals.grabbed_shape.grabbed = false;
         }
     });
 
@@ -215,8 +218,7 @@ export function set_up_event_listeners(globals, elements, constants, app) {
         const touches = event.changedTouches;
         const last_touch = touches[touches.length - 1];
         globals.mouse_screen_position = {x: last_touch.clientX, y: last_touch.clientY};
-        //const world_pos = get_world_position(globals.viewport, last_touch.clientX, last_touch.clientY);
-        //globals.mouse_world_position = world_pos;
+        globals.mouse_world_position = get_world_position(globals.viewport, globals.mouse_screen_position.x, globals.mouse_screen_position.y);
     });
 
     app.canvas.addEventListener("contextmenu", (event) => event.preventDefault());
@@ -235,8 +237,7 @@ export function set_up_event_listeners(globals, elements, constants, app) {
 
     app.canvas.addEventListener("mousemove", (event) => {
         globals.mouse_screen_position = {x: event.clientX, y: event.clientY};
-        //const world_pos = get_world_position(globals.viewport, event.clientX, event.clientY);
-        //globals.mouse_world_position = world_pos;
+        //globals.mouse_world_position = get_world_position(globals.viewport, globals.mouse_screen_position.x, globals.mouse_screen_position.y);
     });
 
     app.canvas.addEventListener("mouseup", (event) => {
