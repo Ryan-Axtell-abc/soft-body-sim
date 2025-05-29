@@ -351,6 +351,7 @@ hr.separator{
         vertical-align: middle;
         text-align: center;
         color: black;
+        border-radius: 6px;
     }
 
 }
