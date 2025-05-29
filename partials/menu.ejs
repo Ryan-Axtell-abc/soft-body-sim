@@ -1,0 +1,122 @@
+
+<div id="menu-holder" class="card-material">
+    <div class="title-holder">
+      Menu
+
+      <div class="button-holder" style="--padding: 2px;">
+        <div id= "settings-open-button" class="svg-holder button">
+          <svg  style="padding: var(--padding);"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings-icon lucide-settings">
+            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+
+
+        <div id= "clear-all-button" class="svg-holder button">
+          <svg style="padding: var(--padding);"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser-icon lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+        </div>
+
+        <div id="menu-toggle-button" class="button" style="--padding: 3px;">
+          <div id="open-arrow"  class="svg-holder hidden" style="padding: var(--padding);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div id="close-arrow" class="svg-holder" style="padding: var(--padding);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up-icon lucide-chevron-up"><path d="m18 15-6-6-6 6"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div id="menu-items-holder-wrapper" class="menu-items-holder-wrapper">
+      <div class="menu-items-holder">
+
+        <div class="dimensions-settings-holder">
+
+          <div class="dimensions-row-holder">
+            <div class="dimensions-item-holder">
+              <label for="shape-selection-dropdown">Shape</label>
+              
+              <select name="shape-selection-dropdown" id="shape-selection-dropdown">
+                <option value="2x2-square">2x2 Square</option>
+                <!-- <option value="3x3-square" >3x3 Square</option> -->
+                <option value="4x4-square" selected="selected">4x4 Square</option>
+                <option value="circle">Circle</option>
+                <option value="circle-2">Circle 2</option>
+                <option value="2x8-rectangle">2x8 Rectangle</option>
+                <option value="2x12-rectangle">2x12 Rectangle</option>
+                <!-- <option value="2x20-rectangle">2x20 Rectangle</option> -->
+                <option value="3x12-rectangle">3x12 Rectangle</option>
+                <option value="custom-rectangle">Custom Rectangle</option>
+                <option id="quad-option" style="display: none;" value="quad">Quad</option>
+              </select>
+
+            </div>
+          </div>
+
+          <div id="custom-rectangle-settings-holder">
+
+            <div class="dimensions-row-holder">
+              <div class="dimensions-item-holder">
+                <label for="custom-rectangle-width-input">Width</label>
+                <div class="columns-row-input-holder">
+                  <input type="number" id="custom-rectangle-width-input" name="custom-rectangle-width-input" min="2" max="100" value="6"/>
+                </div>
+              </div>
+
+              <div class="dimensions-item-holder">
+                <label for="custom-rectangle-height-input">Height</label>
+                <div class="setting-row-input-holder">
+                  <input type="number" id="custom-rectangle-height-input" name="custom-rectangle-height-input" min="2" max="100" value="2"/>
+                </div>
+              </div>
+
+            </div>
+            <div class="dimensions-row-holder">
+              <label for="segmented-frame-checkbox">Split Frame</label>
+              <label class="switch">
+                <input type="checkbox"  id="segmented-frame-checkbox" name="segmented-frame-checkbox" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+
+
+            <div id="frame-settings-holder" class="">
+
+              <div class="dimensions-row-holder">
+                <div class="dimensions-item-holder">
+                  <label for="segment-width-input">└ Segment width</label>
+                  <div class="setting-row-input-holder" style="margin-left: 1rem;"> 
+                    <input type="number" id="segment-width-input" name="segment-width-input" min="3" max="5" value="3"/>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dimensions-row-holder">
+                <label for="fixed-ends-checkbox">└ Fixed ends</label>
+                <label class="switch">
+                  <input type="checkbox"  id="fixed-ends-checkbox" name="fixed-ends-checkbox">
+                  <span class="slider"></span>
+                </label>
+              </div>
+              
+            </div>
+
+          </div>
+
+        </div>
+
+      <div class="dimensions-row-holder" style="margin-bottom: 0; margin-top: .25rem">
+        <div class="dimensions-item-holder" style="gap: .5rem;">
+          <button id="build-button" class="big-button">Build</button>
+        </div>
+      </div>
+
+
+      </div>
+    </div>
+
+  </div>
