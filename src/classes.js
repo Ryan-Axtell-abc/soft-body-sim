@@ -134,6 +134,8 @@ export class Globals {
 
         this.handles_holder = [];
         this.handle_radius = 20;
+
+        this.menu_open = true;
 	}
 }
 
@@ -150,8 +152,8 @@ export class Elements {
         this.clear_all_button = document.getElementById("clear-all-button");
         this.menu_holder = document.getElementById("menu-holder");
         this.menu_toggle_button = document.getElementById("menu-toggle-button");
-        this.up_arrow = document.getElementById("up-arrow");
-        this.down_arrow = document.getElementById("down-arrow");
+        this.open_arrow = document.getElementById("open-arrow");
+        this.close_arrow = document.getElementById("close-arrow");
         this.fps_counter;
         this.show_fps_checkbox = document.getElementById("show-fps-checkbox");
         this.shape_selection_dropdown = document.getElementById("shape-selection-dropdown");
@@ -170,6 +172,7 @@ export class Elements {
         this.segment_width_input = document.getElementById("segment-width-input");
         this.fixed_ends_checkbox = document.getElementById("fixed-ends-checkbox");
         
+        this.menu_items_holder_wrapper = document.getElementById("menu-items-holder-wrapper");
         
 	}
 }

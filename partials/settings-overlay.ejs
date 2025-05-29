@@ -1,0 +1,85 @@
+
+<div id="settings-overlay" class="overlay hidden">
+    <div class="settings-holder card-material">
+
+      
+     
+
+      <div class="title-holder">
+        Settings
+        <div id="settings-close-button" class="svg-holder button" style="--padding: 0px">
+          <svg style="padding: var(--padding);"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+        </div>
+      </div>
+
+      <div class="menu-items-holder-wrapper">
+        <div class="menu-items-holder">
+
+          <div class="dimensions-settings-holder">
+            <div class="category-text-holder">
+              Display Settings
+            </div>
+
+            <div class="dimensions-row-holder">
+              <label for="show-fps-checkbox">Display FPS</label>
+              <label class="switch">
+                <input type="checkbox"  id="show-fps-checkbox" name="show-fps-checkbox">
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="dimensions-settings-holder" style="margin-top: .25rem;">
+            <div class="category-text-holder">
+              Draw Settings
+            </div>
+
+            <div class="dimensions-row-holder">
+              <label for="draw-springs-checkbox">Draw springs</label>
+              <label class="switch">
+                <input type="checkbox"  id="draw-springs-checkbox" name="draw-springs-checkbox" <%= draw_springs_default ? 'checked' : '' %>>
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="dimensions-row-holder">
+              <label for="draw-frames-checkbox">Draw frames</label>
+              <label class="switch">
+                <input type="checkbox"  id="draw-frames-checkbox" name="draw-frames-checkbox">
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="dimensions-row-holder">
+              <label for="draw-vertices-checkbox">Draw vertices</label>
+              <label class="switch">
+                <input type="checkbox"  id="draw-vertices-checkbox" name="draw-vertices-checkbox">
+                <span class="slider"></span>
+              </label>
+            </div>
+
+
+          </div>
+
+          <div class="dimensions-settings-holder" style="margin-top: .25rem;">
+            <div class="category-text-holder">
+              Simulation Settings
+            </div>
+
+            <div class="dimensions-row-holder" style="margin-bottom: 0;">
+              <div class="dimensions-item-holder">
+                <label for="update-itterations-input">Updates per tick</label>
+                <div class="columns-row-input-holder">
+                  <input type="number" id="update-itterations-input" name="update-itterations-input" min="0" max="10" value="1"/>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>

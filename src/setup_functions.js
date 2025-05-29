@@ -160,18 +160,8 @@ export function set_up_event_listeners(globals, elements, constants, app) {
         }
     });
     elements.menu_toggle_button.onclick = function() {
-        if (elements.menu_holder.classList.contains("hide-menu")) {
-            elements.menu_holder.classList.remove("hide-menu");
-            elements.up_arrow.classList.remove("hidden");
-            elements.down_arrow.classList.add("hidden");
-
-        } else {
-
-            elements.menu_holder.classList.add("hide-menu");
-            elements.up_arrow.classList.add("hidden");
-            elements.down_arrow.classList.remove("hidden");
-        }
-        reset_menu_holder_top()
+        globals.menu_open = !globals.menu_open;
+        set_menu_open(globals.menu_open)
     };
 
     app.canvas.addEventListener("touchstart", (event) => {
@@ -322,8 +312,8 @@ export function set_up_event_listeners(globals, elements, constants, app) {
     });
 
     function reset_custom_rectangle_menu_height(){
-        const standard_custom_rectangle_settings_holder_height = 114
-        const extended_frame_settings_holder_height = 76
+        const standard_custom_rectangle_settings_holder_height = 94
+        const extended_frame_settings_holder_height = 94
         //const extended_frame_settings_holder_height = 101
         let target_height = 0
         if (elements.shape_selection_dropdown.value == "custom-rectangle") {
@@ -332,32 +322,42 @@ export function set_up_event_listeners(globals, elements, constants, app) {
                 target_height += extended_frame_settings_holder_height
             }
         }
-        elements.custom_rectangle_settings_holder.style.height = target_height+'px';
+        elements.custom_rectangle_settings_holder.style.maxHeight = target_height+'px';
+        elements.menu_items_holder_wrapper.style.maxHeight = target_height+138+'px';
     }
 
     function reset_frame_settings_holder_height(){
-        const extended_frame_settings_holder_height = 176
+        const extended_frame_settings_holder_height = 94
         //const extended_frame_settings_holder_height = 101
         let target_height = 0
         if (elements.segmented_frame_checkbox.checked) {
             target_height += extended_frame_settings_holder_height
         }
-        elements.frame_settings_holder.style.height = target_height+'px';
+        elements.frame_settings_holder.style.maxHeight = target_height+'px';
     }
 
-    function reset_menu_holder_top(){
-        if (elements.menu_holder.classList.contains("hide-menu")) {
-            const height = elements.menu_holder.offsetHeight;
-            elements.menu_holder.style.top = "-"+(height-34)+'px';
+    function set_menu_open(menu_open){
+
+        if (menu_open) {
+            elements.menu_items_holder_wrapper.classList.remove("hide-menu");
+            elements.open_arrow.classList.add("hidden");
+            elements.close_arrow.classList.remove("hidden");
         } else {
-            elements.menu_holder.style.top = '0px';
+            elements.menu_items_holder_wrapper.classList.add("hide-menu");
+            elements.open_arrow.classList.remove("hidden");
+            elements.close_arrow.classList.add("hidden");
         }
     }
 
+    console.log(elements.shape_selection_dropdown);
+    console.log(elements.segmented_frame_checkbox);
+
     elements.shape_selection_dropdown.addEventListener("change", function() {
+        console.log("shape changed");
         reset_custom_rectangle_menu_height();
     });
     elements.segmented_frame_checkbox.addEventListener("change", function() {
+        console.log("checkbox checked");
         reset_custom_rectangle_menu_height();
         reset_frame_settings_holder_height();
     });
@@ -414,7 +414,7 @@ export function set_up_event_listeners(globals, elements, constants, app) {
     };
 
     window.addEventListener("resize", () => {
-        reset_menu_holder_top()
+        set_menu_open(globals.menu_open)
     });
 }
 
