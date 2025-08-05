@@ -1,6 +1,6 @@
 # Soft Body Physics Engine
 
-A soft body physics simluation written in JavaScript, based on my previous cloth simulation using Verlet integration and constraints, and the game Jelly Car. endered with [PixiJS](https://pixijs.com/).
+A soft body physics simluation written in JavaScript, based on my previous cloth simulation using Verlet integration and constraints, and the game Jelly Car. Rendered with [PixiJS](https://pixijs.com/).
 
 ![Cloth Simulation Screenshot](https://github.com/Ryan-Axtell-abc/soft-body-sim/blob/main/assets/screenshot.png)
 
