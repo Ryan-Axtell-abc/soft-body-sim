@@ -483,3 +483,9 @@ hr.separator{
 .big-button:focus {
 	box-shadow: var(--ring-shadow);
 }
+
+.cloth-sim-holder * {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
