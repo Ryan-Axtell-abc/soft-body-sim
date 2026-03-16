@@ -25,6 +25,8 @@ let accumulator = 0;
         backgroundAlpha: 0,
         resizeTo: window,
         antialias: true,
+        resolution: window.devicePixelRatio || 1,
+        autoDensity: true,
     });
 
     // create viewport

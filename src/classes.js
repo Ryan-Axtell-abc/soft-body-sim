@@ -4,12 +4,12 @@ import { angle_between_vectors, average_angle_from_list, get_distance_between_po
 
 
 export class Constants {
-	constructor() {
-		this.DRAG = .995;
-		this.GRAVITY = 980;
-		this.FIXED_TIME_STEP = 1/60;
+    constructor() {
+        this.DRAG = .995;
+        this.GRAVITY = 980;
+        this.FIXED_TIME_STEP = 1 / 60;
 
-		this.fixed_ground_color = 0xffff00;
+        this.fixed_ground_color = 0xffff00;
         this.mud_color = 0x8a3f00;
         this.tire_color = 0x01ffc5;
         this.tire_color = 0x00ff9e;
@@ -17,16 +17,15 @@ export class Constants {
         this.car_body_color = 0x0088ff;
         this.stage_accessories_color = 0x9526ff;
         this.stage_accessories_color = 0x66CCFF;
-        
+
         this.button_unpressed_color = 0xff5e5e;
         this.button_pressed_color = 0x01ffc5;
-	}
+    }
 }
 
 export class Globals {
-	constructor() {
+    constructor() {
         this.all_lines_graphics = new Graphics();
-        this.particle_container;
         this.render_offset_x = 100;
         this.render_offset_y = 100;
         this.render_scale = 1
@@ -38,8 +37,8 @@ export class Globals {
         this.drag_snap_distance = 10;;
         this.chosen_dragging_vertex = null;
         this.line_length;
-        this.mouse_world_position = {x:0, y:0};
-        this.mouse_screen_position = {x:0, y:0};
+        this.mouse_world_position = { x: 0, y: 0 };
+        this.mouse_screen_position = { x: 0, y: 0 };
 
         this.grav_modifier = 1;
 
@@ -52,7 +51,7 @@ export class Globals {
         this.paused = false;
         this.primary_button_clicked = false;
         this.shape_vertices = []
-        this.circle_texture ;
+        this.circle_texture;
         this.polygon_graphics = new Graphics();
 
         this.closest_vertex = null;
@@ -74,7 +73,7 @@ export class Globals {
         this.edge_normals = [];
         //this.first_picks = [];
         this.second_pick_edges = [];
-        this.physics_multiplier = 1/1;
+        this.physics_multiplier = 1 / 1;
 
         this.mouse_down
 
@@ -108,8 +107,8 @@ export class Globals {
 
         this.start_time = 0;
         this.queued_fire = false;
-        this.cannon_center = {x: 0, y: 0};
-        this.launch_direction = {x: 0, y: 0};
+        this.cannon_center = { x: 0, y: 0 };
+        this.launch_direction = { x: 0, y: 0 };
 
         this.grab_vectors_holder = [];
         this.grab_weights_holder = [];
@@ -136,11 +135,11 @@ export class Globals {
         this.handle_radius = 20;
 
         this.menu_open = true;
-	}
+    }
 }
 
 export class Elements {
-	constructor() {
+    constructor() {
         this.cloth_sim_holder = document.getElementById("cloth-sim-holder");
         this.settings_overlay = document.getElementById("settings-overlay");
         this.controls_overlay = document.getElementById("controls-overlay");
@@ -171,10 +170,10 @@ export class Elements {
         this.segmented_frame_checkbox = document.getElementById("segmented-frame-checkbox");
         this.segment_width_input = document.getElementById("segment-width-input");
         this.fixed_ends_checkbox = document.getElementById("fixed-ends-checkbox");
-        
+
         this.menu_items_holder_wrapper = document.getElementById("menu-items-holder-wrapper");
-        
-	}
+
+    }
 }
 
 export class Shape {
@@ -190,14 +189,14 @@ export class Shape {
         this.particle_container;
 
 
-        this.bounding_box = {left:0, right:0, top:0, bottom: 0, intersecting: false, intersecting_shapes_list: []}
+        this.bounding_box = { left: 0, right: 0, top: 0, bottom: 0, intersecting: false, intersecting_shapes_list: [] }
         this.color = 0x66CCFF;
         this.uses_frame = true;
-		this.DAMPING = .2;
-		this.FRAME_DAMPING = .2;
+        this.DAMPING = .2;
+        this.FRAME_DAMPING = .2;
 
         this.grabbed = false;
-        this.local_mouse_grab_point = { x:0, y:0,};
+        this.local_mouse_grab_point = { x: 0, y: 0, };
         this.angle_when_grabbed = 0;
         this.last_average_angle = 0;
 
@@ -214,9 +213,9 @@ export class Shape {
         this.frame_handle_left;
         this.frame_handle_right;
     }
-    
+
     update_vertices(globals, constants, dt) {
-        let floor 
+        let floor
         if (globals.closed_room) {
             floor = window.innerHeight - 100
         } else {
@@ -230,7 +229,7 @@ export class Shape {
             const vy = ((vertex.y - vertex.prev_y) + vertex.extra_vy) * constants.DRAG + constants.GRAVITY * globals.physics_multiplier * globals.physics_multiplier * globals.grav_modifier * dt * dt;
             vertex.extra_vx = 0;
             vertex.extra_vy = 0;
-    
+
             vertex.prev_x = vertex.x;
             vertex.prev_y = vertex.y;
 
@@ -240,8 +239,8 @@ export class Shape {
 
             if (!vertex.grabbed) {
                 if (vertex.touching) {
-                    vertex.x += vx*this.floor_friction;
-                    vertex.y += vy*this.floor_friction;
+                    vertex.x += vx * this.floor_friction;
+                    vertex.y += vy * this.floor_friction;
 
                 } else {
                     vertex.x += vx;
@@ -250,7 +249,7 @@ export class Shape {
             } else {
                 vertex.x = globals.mouse_world_position.x;
                 vertex.y = globals.mouse_world_position.y;
-    
+
             }
 
             if (globals.closed_room) {
@@ -260,7 +259,7 @@ export class Shape {
                 if (vertex.x > window.innerWidth) {
                     vertex.x = window.innerWidth;
                 }
-                
+
 
             }
 
@@ -272,7 +271,7 @@ export class Shape {
         for (let vertex of this.inner_vertice_holder) {
             const vx = (vertex.x - vertex.prev_x) * constants.DRAG;
             const vy = (vertex.y - vertex.prev_y) * constants.DRAG + constants.GRAVITY * globals.physics_multiplier * globals.physics_multiplier * globals.grav_modifier * dt * dt;
-    
+
             vertex.prev_x = vertex.x;
             vertex.prev_y = vertex.y;
             if (!vertex.grabbed) {
@@ -281,7 +280,7 @@ export class Shape {
             } else {
                 vertex.x = globals.mouse_world_position.x;
                 vertex.y = globals.mouse_world_position.y;
-    
+
             }
             if (vertex.y > floor) {
                 vertex.y = floor;
@@ -290,38 +289,38 @@ export class Shape {
     }
 
     calculate_center() {
-        if ( this.surface_vertice_holder.length > 0 ) {
+        if (this.surface_vertice_holder.length > 0) {
             var x_sum = 0;
             var y_sum = 0;
-    
+
             for (let vertex of this.surface_vertice_holder) {
                 x_sum += vertex.x;
                 y_sum += vertex.y;
             }
-            var x_average = x_sum/this.surface_vertice_holder.length;
-            var y_average = y_sum/this.surface_vertice_holder.length;
-            return {x:x_average, y:y_average}
+            var x_average = x_sum / this.surface_vertice_holder.length;
+            var y_average = y_sum / this.surface_vertice_holder.length;
+            return { x: x_average, y: y_average }
 
         } else {
-            return {x:0, y:0}
+            return { x: 0, y: 0 }
         }
     }
 
     calculate_center_of_certain_verts(verts) {
-        if ( verts.length > 0 ) {
+        if (verts.length > 0) {
             var x_sum = 0;
             var y_sum = 0;
-    
+
             for (let vertex of verts) {
                 x_sum += vertex.x;
                 y_sum += vertex.y;
             }
-            var x_average = x_sum/verts.length;
-            var y_average = y_sum/verts.length;
-            return {x:x_average, y:y_average}
+            var x_average = x_sum / verts.length;
+            var y_average = y_sum / verts.length;
+            return { x: x_average, y: y_average }
 
         } else {
-            return {x:0, y:0}
+            return { x: 0, y: 0 }
         }
     }
 
@@ -329,18 +328,18 @@ export class Shape {
         const vertices = this.surface_vertice_holder;
         // Shoelace method
         let area = 0;
-        
+
         // Loop through all vertices
-        for(let i = 0; i < vertices.length; i++) {
+        for (let i = 0; i < vertices.length; i++) {
             // Get next vertex (wrapping around to 0 at the end)
             const j = (i + 1) % vertices.length;
-            
+
             // Add x1*y2
             area += vertices[i].x * vertices[j].y;
             // Subtract x2*y1
             area -= vertices[j].x * vertices[i].y;
         }
-        
+
         // Take absolute value and divide by 2
         return Math.abs(area) * 0.5;
     }
@@ -351,11 +350,11 @@ export class Shape {
             const surface_vertex = body_verts[i];
             const frame_vertex = collection[i];
 
-            const surface_vertex_relative_to_center = {x:surface_vertex.x - center.x, y:surface_vertex.y - center.y};
-            const frame_vertex_relative_to_center = {x:frame_vertex.x - center.x, y:frame_vertex.y - center.y};
+            const surface_vertex_relative_to_center = { x: surface_vertex.x - center.x, y: surface_vertex.y - center.y };
+            const frame_vertex_relative_to_center = { x: frame_vertex.x - center.x, y: frame_vertex.y - center.y };
 
             const angle = angle_between_vectors(surface_vertex_relative_to_center, frame_vertex_relative_to_center)
-            
+
             angle_list.push(angle);
         }
 
@@ -375,10 +374,10 @@ export class Shape {
                 y: vertex.y - globals.mouse_world_position.y,
             }
             mouse_to_vertex_vector_holder.push(mouse_to_vertex_vector)
-            const distance_to_mouse = Math.sqrt(mouse_to_vertex_vector.x**2 + mouse_to_vertex_vector.y**2);
-            let linear_grab_strength = 1 - Math.min(distance_to_mouse/globals.grab_radius, 1);
-            let grab_strength = linear_grab_strength**3;
-            if (grab_strength > .9 ) {
+            const distance_to_mouse = Math.sqrt(mouse_to_vertex_vector.x ** 2 + mouse_to_vertex_vector.y ** 2);
+            let linear_grab_strength = 1 - Math.min(distance_to_mouse / globals.grab_radius, 1);
+            let grab_strength = linear_grab_strength ** 3;
+            if (grab_strength > .9) {
                 grab_strength = 1
             }
             grab_weights_holder.push(grab_strength);
@@ -387,7 +386,7 @@ export class Shape {
         globals.grab_vectors_holder = mouse_to_vertex_vector_holder;
 
 
-        
+
         globals.grab_weights_holder = grab_weights_holder;
 
         globals.grabbed_shape = this;
@@ -403,14 +402,14 @@ export class Shape {
 
             if (frame_data_pack.fixed) {
                 if (this.is_raising) {
-                    const raise_percentage = ((Math.cos(globals.physics_time*2/Math.PI - Math.PI)+1)/2);
+                    const raise_percentage = ((Math.cos(globals.physics_time * 2 / Math.PI - Math.PI) + 1) / 2);
                     const raised_y_value = this.starting_center.y + (this.max_raised_amount * raise_percentage)
 
                     for (let frame_vertex of frame_verts) {
                         frame_vertex.y = raised_y_value + frame_vertex.offset_y;
                     }
-                    
-                    
+
+
                 } else if (this.frame_collection.length > 1) {
                     //console.log("mulitple", i, this.frame_collection.length)
                     if (i == 0 && this.left_handle) {
@@ -419,7 +418,7 @@ export class Shape {
                             frame_vertex.x = this.left_handle.x + frame_vertex.offset_x;
                             frame_vertex.y = this.left_handle.y + frame_vertex.offset_y;
                         }
-                    } else if (i == this.frame_collection.length-1 && this.right_handle) {
+                    } else if (i == this.frame_collection.length - 1 && this.right_handle) {
                         //console.log("right")
                         for (let frame_vertex of frame_verts) {
                             frame_vertex.x = this.right_handle.x + frame_vertex.offset_x;
@@ -439,8 +438,8 @@ export class Shape {
 
                 for (let frame_vertex of frame_verts) {
 
-                    let updated_frame_offset = rotate_vector({x: frame_vertex.offset_x, y: frame_vertex.offset_y}, (-average_angle));
-                    if ( this.group == "player" && this.type == "wheel") {
+                    let updated_frame_offset = rotate_vector({ x: frame_vertex.offset_x, y: frame_vertex.offset_y }, (-average_angle));
+                    if (this.group == "player" && this.type == "wheel") {
                         let drive_rotation = 0;
                         const left_pressed = globals.keys_pressed["ArrowLeft".toLowerCase()] || globals.keys_pressed["a"];
                         const right_pressed = globals.keys_pressed["ArrowRight".toLowerCase()] || globals.keys_pressed["d"];
@@ -451,9 +450,9 @@ export class Shape {
                         } else if (right_pressed) {
                             drive_rotation = .0209
                         }
-                        updated_frame_offset = rotate_vector({x: frame_vertex.offset_x, y: frame_vertex.offset_y}, (-average_angle + drive_rotation));
+                        updated_frame_offset = rotate_vector({ x: frame_vertex.offset_x, y: frame_vertex.offset_y }, (-average_angle + drive_rotation));
                     }
-                    
+
                     frame_vertex.x = center_of_this_section.x + updated_frame_offset.x;
                     frame_vertex.y = center_of_this_section.y + updated_frame_offset.y;
                 }
@@ -462,46 +461,28 @@ export class Shape {
     }
 
     update_frame_springs(globals, constants) {
-
-        // Calculate and store all corrections before applying any
-        const corrections = new Map();  // Using Map to store corrections for each vertex
-
-        for (let frame_data_pack of this.frame_collection) {
-            const frame_spring_list = frame_data_pack.spring_list;
-            for (let frame_spring of frame_spring_list) {
-                const vertex = frame_spring.surface_vertex;
-                corrections.set(vertex, {x: 0, y: 0});
-
-            }
-        }
-
+        for (let v of this.surface_vertice_holder) { v.correction_x = 0; v.correction_y = 0; }
 
         for (let frame_data_pack of this.frame_collection) {
             const frame_spring_list = frame_data_pack.spring_list;
 
             for (let frame_spring of frame_spring_list) {
-                const frame_vertex = frame_spring.frame_vertex;
                 const surface_vertex = frame_spring.surface_vertex;
 
-                const distance_x = frame_vertex.x - surface_vertex.x;
-                const distance_y = frame_vertex.y - surface_vertex.y;
-
                 if (!surface_vertex.grabbed) {
-                    const correction_value = corrections.get(surface_vertex);
-                    //surface_vertex.x += distance_x * this.DAMPING;
-                    //surface_vertex.y += distance_y * this.DAMPING;
-                    correction_value.x += distance_x * this.FRAME_DAMPING;
-                    correction_value.y += distance_y * this.FRAME_DAMPING;
-                }
+                    const distance_x = frame_spring.frame_vertex.x - surface_vertex.x;
+                    const distance_y = frame_spring.frame_vertex.y - surface_vertex.y;
 
+                    surface_vertex.correction_x += distance_x * this.FRAME_DAMPING;
+                    surface_vertex.correction_y += distance_y * this.FRAME_DAMPING;
+                }
             }
         }
-    
-        // Apply all corrections at once
-        for (let [vertex, correction] of corrections) {
-            if (!vertex.grabbed) {
-                vertex.x += correction.x;
-                vertex.y += correction.y;
+
+        for (let v of this.surface_vertice_holder) {
+            if (!v.grabbed) {
+                v.x += v.correction_x;
+                v.y += v.correction_y;
             }
         }
     }
@@ -524,27 +505,24 @@ export class Shape {
         globals.camera_target.x += (this.pre_lerp_target_x - globals.camera_target.x) * .3;
         globals.camera_target.y += (pre_lerp_target_y - globals.camera_target.y) * .3;
     }
-    
 
     update_particles(globals) {
-        const combined_vertice_holder = this.surface_vertice_holder.concat(this.inner_vertice_holder);
-        for (let i = 0; i < combined_vertice_holder.length; i++) {
-            const vertex = combined_vertice_holder[i];
+        for (let i = 0; i < this.all_vertices.length; i++) {
+            const vertex = this.all_vertices[i];
             const particle = this.particle_holder[i];
 
+            particle.x = vertex.x * globals.render_scale;
+            particle.y = vertex.y * globals.render_scale;
 
-            particle.position.set(vertex.x*globals.render_scale, vertex.y*globals.render_scale);
-            if (vertex.hovered == true) {
-                particle.position.set(vertex.x*globals.render_scale, vertex.y*globals.render_scale - 2);
+            if (vertex.hovered) {
+                particle.y -= 2;
             }
-
         }
-
     }
 
     update_bounding_box() {
         const first_vertex = this.surface_vertice_holder[0];
-        this.bounding_box = {left:first_vertex.x, right:first_vertex.x, top:first_vertex.y, bottom: first_vertex.y}
+        this.bounding_box = { left: first_vertex.x, right: first_vertex.x, top: first_vertex.y, bottom: first_vertex.y }
         for (let i = 1; i < this.surface_vertice_holder.length; i++) {
             const vertex = this.surface_vertice_holder[i];
 
@@ -564,25 +542,18 @@ export class Shape {
     }
 
     update_springs(globals, constants) {
-        // Calculate and store all corrections before applying any
-        const corrections = new Map();  // Using Map to store corrections for each vertex
-        
-        // Initialize corrections map
-        var combined_vertice_holder = this.surface_vertice_holder.concat(this.inner_vertice_holder);
-        for (let vertex of combined_vertice_holder) {
-            corrections.set(vertex, {x: 0, y: 0});
-        }        
-        
+        for (let v of this.all_vertices) { v.correction_x = 0; v.correction_y = 0; }
+
         for (let spring of this.spring_holder) {
             const vertex_1 = spring.vertex_1;
             const vertex_2 = spring.vertex_2;
 
             const distance_x = vertex_2.x - vertex_1.x;
             const distance_y = vertex_2.y - vertex_1.y;
-            let distance = Math.sqrt(distance_x**2 + distance_y**2);
+            let distance = Math.sqrt(distance_x ** 2 + distance_y ** 2);
 
             if (distance < 0.00001) {
-                distance = 0.00001
+                distance = 0.00001;
             }
 
             const difference = (spring.length - distance) / distance;
@@ -591,22 +562,19 @@ export class Shape {
             const correction_y = distance_y * difference * 0.5;
 
             if (!vertex_1.grabbed) {
-                const correction_value_1 = corrections.get(vertex_1);
-                correction_value_1.x -= correction_x * this.FRAME_DAMPING;
-                correction_value_1.y -= correction_y * this.FRAME_DAMPING;
+                vertex_1.correction_x -= correction_x * this.FRAME_DAMPING;
+                vertex_1.correction_y -= correction_y * this.FRAME_DAMPING;
             }
             if (!vertex_2.grabbed) {
-                const correction_value_2 = corrections.get(vertex_2);
-                correction_value_2.x += correction_x * this.FRAME_DAMPING;
-                correction_value_2.y += correction_y * this.FRAME_DAMPING;
+                vertex_2.correction_x += correction_x * this.FRAME_DAMPING;
+                vertex_2.correction_y += correction_y * this.FRAME_DAMPING;
             }
         }
-    
-        // Apply all corrections at once
-        for (let [vertex, correction] of corrections) {
-            if (!vertex.grabbed) {
-                vertex.x += correction.x;
-                vertex.y += correction.y;
+
+        for (let v of this.all_vertices) {
+            if (!v.grabbed) {
+                v.x += v.correction_x;
+                v.y += v.correction_y;
             }
         }
     }
@@ -627,9 +595,9 @@ export class Shape {
             globals.tire_2 = null;
             globals.tire_axel_2_verts = [];
         }
-        
+
         globals.shapes_holder = globals.shapes_holder.filter(s => s !== this);
-        
+
         this.surface_vertice_holder = [];
         this.inner_vertice_holder = [];
         this.frame_collection = [];
@@ -638,7 +606,11 @@ export class Shape {
         this.frame_spring_holder = [];
 
         this.particle_holder = [];
-        this.particle_container.destroy({children: true});
+        if (this.particle_container.parent) {
+            this.particle_container.parent.removeChild(this.particle_container);
+        }
+        this.particle_container.removeParticles();
+        this.particle_container.destroy();
     }
 }
 
@@ -647,7 +619,7 @@ export class Accelerator {
     constructor(surface_vertice_holder) {
         this.surface_vertice_holder = surface_vertice_holder;
 
-        this.bounding_box = {left:0, right:0, top:0, bottom: 0, intersecting: false, intersecting_shapes_list: []}
+        this.bounding_box = { left: 0, right: 0, top: 0, bottom: 0, intersecting: false, intersecting_shapes_list: [] }
         this.color = 0x66CCFF;
 
         this.group;
@@ -658,7 +630,7 @@ export class Accelerator {
 
     update_bounding_box() {
         const first_vertex = this.surface_vertice_holder[0];
-        this.bounding_box = {left:first_vertex.x, right:first_vertex.x, top:first_vertex.y, bottom: first_vertex.y}
+        this.bounding_box = { left: first_vertex.x, right: first_vertex.x, top: first_vertex.y, bottom: first_vertex.y }
         for (let i = 1; i < this.surface_vertice_holder.length; i++) {
             const vertex = this.surface_vertice_holder[i];
 
@@ -671,13 +643,8 @@ export class Accelerator {
     }
 
     delete(globals) {
-
-        globals.shapes_holder = globals.shapes_holder.filter(s => s !== this);
-        
+        globals.accelerators_holder = globals.accelerators_holder.filter(s => s !== this);
         this.surface_vertice_holder = [];
-
-        this.particle_holder = [];
-        this.particle_container.destroy({children: true});
     }
 }
 

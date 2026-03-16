@@ -2,8 +2,8 @@ import { Application, Ticker } from 'pixi.js';
 import { Viewport } from 'pixi-viewport'
 
 import { Constants, Elements, Globals } from './classes.js'
-import { update_physics, create_fps_counter, draw_graphics, shake_screen, launch_ball, get_world_position, set_shape_position,  } from './functions.js'
-import {  } from './shape_building.js';
+import { update_physics, create_fps_counter, draw_graphics, shake_screen, launch_ball, get_world_position, set_shape_position, } from './functions.js'
+import { } from './shape_building.js';
 import { set_up_event_listeners, setup, spawn_car } from './setup_functions.js';
 
 const constants = new Constants();
@@ -19,13 +19,14 @@ globals.closed_room = true;
 let accumulator = 0;
 
 // Asynchronous IIFE
-(async () =>
-{
+(async () => {
     // Intialize the application.
     await app.init({
         backgroundAlpha: 0,
         resizeTo: window,
         antialias: true,
+        resolution: window.devicePixelRatio || 1,
+        autoDensity: true,
     });
 
     // create viewport
@@ -44,10 +45,10 @@ let accumulator = 0;
     app.stage.addChild(viewport)
 
     viewport
-        //.pinch()
-        //.wheel()
-        //.decelerate()
-        //.setZoom(0.5)
+    //.pinch()
+    //.wheel()
+    //.decelerate()
+    //.setZoom(0.5)
 
 
     elements.cloth_sim_holder.appendChild(app.canvas);
@@ -66,24 +67,23 @@ let accumulator = 0;
     app.ticker.maxFPS = 60;
     app.ticker.minFPS = 60;
 
-    app.ticker.add((time) =>
-    {
+    app.ticker.add((time) => {
         if (running_setup) {
-				if ( document.getElementById("fps-counter-element") != undefined && document.getElementById("fps-counter-element") != null) {
-                    elements.fps_counter = document.getElementById("fps-counter-element");
+            if (document.getElementById("fps-counter-element") != undefined && document.getElementById("fps-counter-element") != null) {
+                elements.fps_counter = document.getElementById("fps-counter-element");
 
-                    if (elements.show_fps_checkbox.checked == false) {
-                        elements.fps_counter.classList.add('hidden');
-                        elements.level_button_holder.classList.remove('level-button-holder-offset');
-                    }
+                if (elements.show_fps_checkbox.checked == false) {
+                    elements.fps_counter.classList.add('hidden');
+                    elements.level_button_holder.classList.remove('level-button-holder-offset');
+                }
 
-                    globals.start_time = Date.now()
-                    running_setup = false
-				}
+                globals.start_time = Date.now()
+                running_setup = false
+            }
         } else {
 
-            if (globals.paused == false) {             
- 
+            if (globals.paused == false) {
+
                 if (globals.physics_independent_from_frame_rate) {
                     const target_frame_time = 1.0; // Since PIXI seems to target deltaTime of 1.0
                     let rounded_delta_time = time.deltaTime;

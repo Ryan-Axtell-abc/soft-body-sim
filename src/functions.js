@@ -1,4 +1,4 @@
-import { Container, Graphics, Point, Sprite } from "pixi.js";
+import { Container, Graphics, Point, Particle } from "pixi.js";
 import { Constants, Elements, Globals, Shape } from "./classes.js";
 import { make_cannon_ball } from "./shape_building.js";
 
@@ -605,7 +605,7 @@ export function update_physics(globals, constants, dt) {
             globals.grabbed_shape.x = globals.mouse_world_position.x;
 
         } else {
-            const combined_vertice_holder = globals.grabbed_shape.surface_vertice_holder.concat(globals.grabbed_shape.inner_vertice_holder);
+            const combined_vertice_holder = globals.grabbed_shape.all_vertices;
             for (let i = 0; i < combined_vertice_holder.length; i++) {
                 const vertex = combined_vertice_holder[i];
                 const vector_to_mouse = globals.grab_vectors_holder[i];
@@ -730,7 +730,7 @@ export function update_physics(globals, constants, dt) {
         for (let shape of globals.shapes_holder) {
             if ( shape.group != "stage" && shape.group != "stage_accessory") {
                 if (bounding_boxes_intersect(accelerator.bounding_box, shape.bounding_box)) {
-                    const combined_vertice_holder = shape.surface_vertice_holder.concat(shape.inner_vertice_holder);
+                    const combined_vertice_holder = shape.all_vertices;
                     for (let vertex of combined_vertice_holder) {
                         if (point_in_polygon(vertex, accelerator)) {
                             vertex.extra_vx = accelerator.x_force;
@@ -782,15 +782,22 @@ export function make_vertice(x, y) {
     corner: false,
     extra_vx: 0,
     extra_vy: 0,
+    correction_x: 0,
+    correction_y: 0,
+
   };
 
   return vertex;
 }
 
 export function make_particle(globals, x, y) {
-  const particle = new Sprite(globals.circle_texture);
-  particle.anchor.set(0.5);
-  particle.position.set(x, y);
+  const particle = new Particle({
+    texture: globals.circle_texture,
+    x: x,
+    y: y,
+    anchorX: 0.5,
+    anchorY: 0.5,
+  });
 
   return particle;
 }

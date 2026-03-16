@@ -1,4 +1,4 @@
-import { Container, Graphics, Point, Sprite } from "pixi.js";
+import { Graphics } from "pixi.js";
 import { make_circle_1, make_circle_2, make_quad, make_car_body, general_rectangle_builder } from "./shape_building.js";
 import { clear_shapes, create_circle_texture, get_world_position, hide_element, point_in_polygon, set_shape_position, show_element } from "./functions.js";
 
@@ -8,9 +8,7 @@ export function setup(globals, app) {
     if (globals.all_lines_graphics != undefined) {
         globals.all_lines_graphics.destroy();
     }
-    if (globals.particle_container != undefined) {
-        globals.particle_container.destroy();
-    }
+
     if (globals.bounding_box_graphics != undefined) {
         globals.bounding_box_graphics.destroy();
     }
@@ -56,15 +54,6 @@ export function setup(globals, app) {
     globals.viewport.addChild(globals.debug_graphics_layer_2);
     globals.viewport.addChild(globals.debug_graphics_layer_3);
     globals.viewport.addChild(globals.overlay_graphics);
-
-    globals.particle_container = new Container(256, {
-        position: true,
-        rotation: false,
-        uvs: false,
-        tint: true,
-    });
-
-    globals.viewport.addChild(globals.particle_container);
 
     globals.circle_texture = create_circle_texture(app, 3);
 }
