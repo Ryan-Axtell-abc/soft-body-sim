@@ -1,8 +1,8 @@
 # Build stage
-FROM node:20-alpine AS build
+FROM node:20 AS build
 WORKDIR /app
 COPY package.json package-lock.json* ./
-RUN rm -rf node_modules package-lock.json && npm install
+RUN npm ci
 COPY . .
 RUN npx vite build
 
