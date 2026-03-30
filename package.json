@@ -5,5 +5,8 @@
     "pixi.js": "^8.17.0",
     "stats.js": "^0.17.0",
     "vite-plugin-ejs": "^1.7.0"
+  },
+  "devDependencies": {
+    "vite": "^8.0.3"
   }
 }
