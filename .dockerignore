@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+.git
+*.log
+*.blend
+*.blend1
+.env
+.DS_Store
+repomix*
