@@ -4,7 +4,7 @@ import { clear_shapes, create_circle_texture, get_world_position, hide_element, 
 
 
 export function setup(globals, app) {
-        
+
     if (globals.all_lines_graphics != undefined) {
         globals.all_lines_graphics.destroy();
     }
@@ -24,7 +24,7 @@ export function setup(globals, app) {
     if (globals.debug_graphics_layer_3 != undefined) {
         globals.debug_graphics_layer_3.destroy();
     }
-    
+
     if (globals.overlay_graphics != undefined) {
         globals.overlay_graphics.destroy();
     }
@@ -36,7 +36,7 @@ export function setup(globals, app) {
     globals.debug_graphics_layer_3 = new Graphics();
     globals.overlay_graphics = new Graphics();
 
-    
+
 
     globals.line_length = 30;
     globals.all_lines_graphics.setStrokeStyle({ color: 0x000000, width: 1 });
@@ -68,7 +68,7 @@ export function spawn_car(globals, constants, viewport) {
     tire_1.FRAME_DAMPING = .8;
     globals.tire_1 = tire_1;
     const tire_1_surface = tire_1.surface_vertice_holder;
-    globals.tire_axel_1_verts = [ tire_1_surface[0],tire_1_surface[4],tire_1_surface[8],tire_1_surface[12]];
+    globals.tire_axel_1_verts = [tire_1_surface[0], tire_1_surface[4], tire_1_surface[8], tire_1_surface[12]];
 
 
     const tire_2 = make_circle_2(globals);
@@ -80,7 +80,7 @@ export function spawn_car(globals, constants, viewport) {
     tire_2.FRAME_DAMPING = .8;
     globals.tire_2 = tire_2;
     const tire_2_surface = tire_2.surface_vertice_holder;
-    globals.tire_axel_2_verts = [ tire_2_surface[0],tire_2_surface[4],tire_2_surface[8],tire_2_surface[12]];
+    globals.tire_axel_2_verts = [tire_2_surface[0], tire_2_surface[4], tire_2_surface[8], tire_2_surface[12]];
 
 
     /*
@@ -125,8 +125,8 @@ export function make_platform_array(globals, constants, amount, start_position, 
         width = platform.bounding_box.right - platform.bounding_box.left;
         globals.level_shapes.add(platform);
         set_shape_position(globals, platform, true, {
-            x: start_position.x + i*(width+distance_between_x),
-            y: start_position.y + i*(offset_y)
+            x: start_position.x + i * (width + distance_between_x),
+            y: start_position.y + i * (offset_y)
         });
         platform.group = "stage_accessory"
     }
@@ -136,19 +136,19 @@ export function make_platform_array(globals, constants, amount, start_position, 
 export function set_up_event_listeners(globals, elements, constants, app) {
 
     // General
-    elements.settings_close_button.onclick = function() { hide_element(elements.settings_overlay) };
-    elements.settings_open_button.onclick = function() { show_element(elements.settings_overlay) };
-    elements.show_fps_checkbox.addEventListener('change', function() {
+    elements.settings_close_button.onclick = function () { hide_element(elements.settings_overlay) };
+    elements.settings_open_button.onclick = function () { show_element(elements.settings_overlay) };
+    elements.show_fps_checkbox.addEventListener('change', function () {
         if (this.checked) {
             elements.fps_counter.classList.remove('hidden');
             elements.level_button_holder.classList.add('level-button-holder-offset');
-            
+
         } else {
             elements.fps_counter.classList.add('hidden');
             elements.level_button_holder.classList.remove('level-button-holder-offset');
         }
     });
-    elements.menu_toggle_button.onclick = function() {
+    elements.menu_toggle_button.onclick = function () {
         globals.menu_open = !globals.menu_open;
         set_menu_open(globals.menu_open)
     };
@@ -157,7 +157,7 @@ export function set_up_event_listeners(globals, elements, constants, app) {
         const touches = event.changedTouches;
         const last_touch = touches[touches.length - 1];
 
-        globals.mouse_screen_position = {x: last_touch.clientX, y: last_touch.clientY};
+        globals.mouse_screen_position = { x: last_touch.clientX, y: last_touch.clientY };
         globals.mouse_world_position = get_world_position(globals.viewport, globals.mouse_screen_position.x, globals.mouse_screen_position.y);
         globals.drag_mode = true;
         globals.actively_dragging = false;
@@ -166,7 +166,7 @@ export function set_up_event_listeners(globals, elements, constants, app) {
     app.canvas.addEventListener("touchend", (event) => {
         const touches = event.changedTouches;
         const last_touch = touches[touches.length - 1];
-        globals.mouse_screen_position = {x: last_touch.clientX, y: last_touch.clientY};
+        globals.mouse_screen_position = { x: last_touch.clientX, y: last_touch.clientY };
         globals.mouse_world_position = get_world_position(globals.viewport, globals.mouse_screen_position.x, globals.mouse_screen_position.y);
         globals.drag_mode = false;
         globals.actively_dragging = false;
@@ -181,7 +181,7 @@ export function set_up_event_listeners(globals, elements, constants, app) {
     app.canvas.addEventListener("touchcancel", (event) => {
         const touches = event.changedTouches;
         const last_touch = touches[touches.length - 1];
-        globals.mouse_screen_position = {x: last_touch.clientX, y: last_touch.clientY};
+        globals.mouse_screen_position = { x: last_touch.clientX, y: last_touch.clientY };
         globals.mouse_world_position = get_world_position(globals.viewport, globals.mouse_screen_position.x, globals.mouse_screen_position.y);
         globals.drag_mode = false;
         globals.actively_dragging = false;
@@ -196,7 +196,7 @@ export function set_up_event_listeners(globals, elements, constants, app) {
     app.canvas.addEventListener("touchmove", (event) => {
         const touches = event.changedTouches;
         const last_touch = touches[touches.length - 1];
-        globals.mouse_screen_position = {x: last_touch.clientX, y: last_touch.clientY};
+        globals.mouse_screen_position = { x: last_touch.clientX, y: last_touch.clientY };
         globals.mouse_world_position = get_world_position(globals.viewport, globals.mouse_screen_position.x, globals.mouse_screen_position.y);
     });
 
@@ -207,7 +207,7 @@ export function set_up_event_listeners(globals, elements, constants, app) {
             globals.drag_mode = true;
             globals.actively_dragging = false;
         }
-        
+
 
         if (event.button == globals.grav_button) {
             globals.grav_modifier = 10;
@@ -215,7 +215,7 @@ export function set_up_event_listeners(globals, elements, constants, app) {
     });
 
     app.canvas.addEventListener("mousemove", (event) => {
-        globals.mouse_screen_position = {x: event.clientX, y: event.clientY};
+        globals.mouse_screen_position = { x: event.clientX, y: event.clientY };
         //globals.mouse_world_position = get_world_position(globals.viewport, globals.mouse_screen_position.x, globals.mouse_screen_position.y);
     });
 
@@ -229,14 +229,14 @@ export function set_up_event_listeners(globals, elements, constants, app) {
             if (globals.grabbed_shape != null) {
                 globals.grabbed_shape.grabbed = false;
             }
-            
+
         }
 
         if (event.button == globals.delete_button) {
             for (let i = 0; i < globals.shapes_holder.length; i++) {
-                const shape = globals.shapes_holder[globals.shapes_holder.length-1 - i];
+                const shape = globals.shapes_holder[globals.shapes_holder.length - 1 - i];
                 if (globals.drag_mode == false) {
-                    if ( point_in_polygon(globals.mouse_world_position, shape) ) {
+                    if (point_in_polygon(globals.mouse_world_position, shape)) {
                         //shape.grab(globals);
                         console.log("delete:", shape)
                         if (shape.left_handle) {
@@ -269,38 +269,38 @@ export function set_up_event_listeners(globals, elements, constants, app) {
         }
     });
 
-    elements.draw_frames_checkbox.addEventListener("change", function() {
-    if (this.checked) {
-        globals.draw_frames = true;
-        globals.draw_frame_springs = true;
-    } else {
-        globals.draw_frames = false;
-        globals.draw_frame_springs = false;
-    }
+    elements.draw_frames_checkbox.addEventListener("change", function () {
+        if (this.checked) {
+            globals.draw_frames = true;
+            globals.draw_frame_springs = true;
+        } else {
+            globals.draw_frames = false;
+            globals.draw_frame_springs = false;
+        }
     });
 
-    elements.draw_springs_checkbox.addEventListener("change", function() {
-    if (this.checked) {
-        globals.draw_springs = true;
-    } else {
-        globals.draw_springs = false;
-    }
+    elements.draw_springs_checkbox.addEventListener("change", function () {
+        if (this.checked) {
+            globals.draw_springs = true;
+        } else {
+            globals.draw_springs = false;
+        }
     });
 
-    elements.draw_vertices_checkbox.addEventListener("change", function() {
+    elements.draw_vertices_checkbox.addEventListener("change", function () {
         if (this.checked) {
             globals.draw_vertex_particles = true;
         } else {
             globals.draw_vertex_particles = false;
         }
     });
-    
 
-    elements.update_itterations_input.addEventListener("change", function() {
+
+    elements.update_itterations_input.addEventListener("change", function () {
         globals.physics_updates_per_tick = this.value;
     });
 
-    function reset_custom_rectangle_menu_height(){
+    function reset_custom_rectangle_menu_height() {
         const standard_custom_rectangle_settings_holder_height = 94
         const extended_frame_settings_holder_height = 94
         //const extended_frame_settings_holder_height = 101
@@ -311,21 +311,21 @@ export function set_up_event_listeners(globals, elements, constants, app) {
                 target_height += extended_frame_settings_holder_height
             }
         }
-        elements.custom_rectangle_settings_holder.style.maxHeight = target_height+'px';
-        elements.menu_items_holder_wrapper.style.maxHeight = target_height+138+'px';
+        elements.custom_rectangle_settings_holder.style.maxHeight = target_height + 'px';
+        elements.menu_items_holder_wrapper.style.maxHeight = target_height + 138 + 'px';
     }
 
-    function reset_frame_settings_holder_height(){
+    function reset_frame_settings_holder_height() {
         const extended_frame_settings_holder_height = 94
         //const extended_frame_settings_holder_height = 101
         let target_height = 0
         if (elements.segmented_frame_checkbox.checked) {
             target_height += extended_frame_settings_holder_height
         }
-        elements.frame_settings_holder.style.maxHeight = target_height+'px';
+        elements.frame_settings_holder.style.maxHeight = target_height + 'px';
     }
 
-    function set_menu_open(menu_open){
+    function set_menu_open(menu_open) {
 
         if (menu_open) {
             elements.menu_items_holder_wrapper.classList.remove("hide-menu");
@@ -341,11 +341,11 @@ export function set_up_event_listeners(globals, elements, constants, app) {
     console.log(elements.shape_selection_dropdown);
     console.log(elements.segmented_frame_checkbox);
 
-    elements.shape_selection_dropdown.addEventListener("change", function() {
+    elements.shape_selection_dropdown.addEventListener("change", function () {
         console.log("shape changed");
         reset_custom_rectangle_menu_height();
     });
-    elements.segmented_frame_checkbox.addEventListener("change", function() {
+    elements.segmented_frame_checkbox.addEventListener("change", function () {
         console.log("checkbox checked");
         reset_custom_rectangle_menu_height();
         reset_frame_settings_holder_height();
@@ -360,7 +360,7 @@ export function set_up_event_listeners(globals, elements, constants, app) {
     globals.draw_vertex_particles = elements.draw_vertices_checkbox.checked;
     globals.draw_vertex_particles = elements.draw_vertices_checkbox.checked;
     globals.physics_updates_per_tick = elements.update_itterations_input.value;
-    
+
     elements.clear_all_button.onclick = function () {
         clear_shapes(globals);
     };
@@ -397,9 +397,9 @@ export function set_up_event_listeners(globals, elements, constants, app) {
         const padding = 40;
         const top_padding = 20;
         const left_padding = padding;
-        const target_upper_left = {x: globals.viewport.left + left_padding, y: globals.viewport.top + top_padding};
+        const target_upper_left = { x: globals.viewport.left + left_padding, y: globals.viewport.top + top_padding };
         set_shape_position(globals, shape_to_build, true, target_upper_left);
-        
+
     };
 
     window.addEventListener("resize", () => {
@@ -410,13 +410,13 @@ export function set_up_event_listeners(globals, elements, constants, app) {
 export function set_up_event_listeners_car_level(globals, elements, constants, app) {
     // For car
     window.addEventListener("resize", () => {
-        if ( globals.viewport ) {
+        if (globals.viewport) {
             globals.viewport.screenWidth = window.innerWidth;
             globals.viewport.screenHeight = window.innerHeight;
         }
     });
 
-    elements.controls_close_button.onclick = function() { hide_element(elements.controls_overlay) };
+    elements.controls_close_button.onclick = function () { hide_element(elements.controls_overlay) };
 
     window.addEventListener("keydown", (event) => {
         globals.keys_pressed[String(event.key).toLowerCase()] = true;
@@ -426,6 +426,49 @@ export function set_up_event_listeners_car_level(globals, elements, constants, a
         delete globals.keys_pressed[String(event.key).toLowerCase()];
         if (event.key == " " && globals.car_body) {
             globals.queued_fire = true;
+        }
+    });
+
+    // --- Mobile touch controls ---
+    const mobileLeftBtn = document.getElementById("mobile-left-btn");
+    const mobileRightBtn = document.getElementById("mobile-right-btn");
+    const mobileFireBtn = document.getElementById("mobile-fire-btn");
+
+    function bindMobileButton(button, keyName, options) {
+        if (!button) return;
+
+        const activate = (e) => {
+            e.preventDefault();
+            globals.keys_pressed[keyName] = true;
+            button.classList.add("active");
+        };
+
+        const deactivate = (e) => {
+            e.preventDefault();
+            delete globals.keys_pressed[keyName];
+            button.classList.remove("active");
+            if (options && options.onRelease) {
+                options.onRelease();
+            }
+        };
+
+        button.addEventListener("touchstart", activate, { passive: false });
+        button.addEventListener("touchend", deactivate, { passive: false });
+        button.addEventListener("touchcancel", deactivate, { passive: false });
+
+        // Also support mouse for desktop testing
+        button.addEventListener("mousedown", activate);
+        button.addEventListener("mouseup", deactivate);
+        button.addEventListener("mouseleave", deactivate);
+    }
+
+    bindMobileButton(mobileLeftBtn, "arrowleft");
+    bindMobileButton(mobileRightBtn, "arrowright");
+    bindMobileButton(mobileFireBtn, " ", {
+        onRelease: () => {
+            if (globals.car_body) {
+                globals.queued_fire = true;
+            }
         }
     });
 }
