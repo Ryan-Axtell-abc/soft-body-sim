@@ -2,7 +2,7 @@
 FROM node:20-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json* ./
-RUN npm ci && npm rebuild
+RUN rm -rf node_modules package-lock.json && npm install
 COPY . .
 RUN npx vite build
 
