@@ -2,9 +2,12 @@
 FROM node:22 AS build
 WORKDIR /app
 COPY package.json package-lock.json* ./
+RUN grep -A 3 '"node_modules/vite"' package-lock.json
 RUN npm ci
+RUN cat node_modules/vite/package.json | grep '"version"'
 COPY . .
-RUN ./node_modules/.bin/vite --version && ./node_modules/.bin/vite build
+RUN cat node_modules/vite/package.json | grep '"version"'
+RUN ./node_modules/.bin/vite build
 
 # Serve stage
 FROM nginx:alpine
