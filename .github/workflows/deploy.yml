@@ -19,7 +19,6 @@ jobs:
             cd /var/www/html/soft-body-sim
             git pull origin main
             docker compose down
-            docker compose build --no-cache
-            docker compose up -d
+            docker compose up --build -d
             docker image prune -f
             echo "✅ Deployment complete!"
