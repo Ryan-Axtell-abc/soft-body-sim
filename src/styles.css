@@ -337,6 +337,7 @@ hr.separator{
     position: absolute;
     padding: .5rem;
     align-items: center;
+    z-index: 1;
 
     a {
         text-decoration: none;
