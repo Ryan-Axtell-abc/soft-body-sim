@@ -77,6 +77,7 @@ let accumulator = 0;
                     elements.level_button_holder.classList.remove('level-button-holder-offset');
                 }
 
+                document.getElementById('build-button').classList.add('entrance-anim');
                 globals.start_time = Date.now()
                 running_setup = false
             }
